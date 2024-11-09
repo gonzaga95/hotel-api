@@ -1,5 +1,6 @@
 package com.grupo4.hotel_api.controller;
 
+import com.grupo4.hotel_api.controller.DTO.ReservaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

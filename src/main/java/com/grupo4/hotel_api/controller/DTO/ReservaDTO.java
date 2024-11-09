@@ -1,4 +1,4 @@
-package com.grupo4.hotel_api.controller;
+package com.grupo4.hotel_api.controller.DTO;
 
 import lombok.Data;
 
