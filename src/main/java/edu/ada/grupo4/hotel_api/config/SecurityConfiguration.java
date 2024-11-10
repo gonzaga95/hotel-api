@@ -1,4 +1,4 @@
-package com.grupo4.hotel_api.config;
+package edu.ada.grupo4.hotel_api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

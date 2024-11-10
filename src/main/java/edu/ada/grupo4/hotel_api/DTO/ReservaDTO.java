@@ -1,4 +1,4 @@
-package com.grupo4.hotel_api.DTO;
+package edu.ada.grupo4.hotel_api.DTO;
 
 import lombok.Data;
 import java.time.LocalDate;

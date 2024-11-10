@@ -1,4 +1,4 @@
-package com.grupo4.hotel_api;
+package edu.ada.grupo4.hotel_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

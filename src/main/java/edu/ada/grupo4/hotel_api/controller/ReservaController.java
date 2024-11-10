@@ -1,7 +1,7 @@
-package com.grupo4.hotel_api.controller;
+package edu.ada.grupo4.hotel_api.controller;
 
-import com.grupo4.hotel_api.DTO.ReservaDTO;
-import com.grupo4.hotel_api.service.ReservaService;
+import edu.ada.grupo4.hotel_api.DTO.ReservaDTO;
+import edu.ada.grupo4.hotel_api.service.ReservaService;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

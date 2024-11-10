@@ -1,4 +1,4 @@
-package com.grupo4.hotel_api.model;
+package edu.ada.grupo4.hotel_api.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

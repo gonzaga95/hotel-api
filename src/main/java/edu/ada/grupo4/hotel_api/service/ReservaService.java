@@ -1,8 +1,8 @@
-package com.grupo4.hotel_api.service;
+package edu.ada.grupo4.hotel_api.service;
 
-import com.grupo4.hotel_api.model.ReservaHotel;
-import com.grupo4.hotel_api.repository.ReservaRepository;
-import com.grupo4.hotel_api.DTO.ReservaDTO;
+import edu.ada.grupo4.hotel_api.model.ReservaHotel;
+import edu.ada.grupo4.hotel_api.repository.ReservaRepository;
+import edu.ada.grupo4.hotel_api.DTO.ReservaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
