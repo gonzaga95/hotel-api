@@ -21,12 +21,19 @@ public class ReservaService {
     @PostMapping
     @PreAuthorize("hasRole('USER')")
     public ReservaDTO salvar(ReservaDTO reservaDTO) {
+
         ReservaHotel reservaHotel = new ReservaHotel();
         reservaHotel.setNomeCliente(reservaDTO.getNomeCliente());
         reservaHotel.setNumeroReserva(reservaDTO.getNumeroReserva());
+        reservaHotel.setCidadeOrigemCliente(reservaDTO.getCidadeOrigemCliente());
+        reservaHotel.setUfOrigemCliente(reservaDTO.getUfOrigemCliente());
+        reservaHotel.setDataInicioReserva(reservaDTO.getDataInicioReserva());
+        reservaHotel.setDataFimReserva(reservaDTO.getDataFimReserva());
+
         reservaRepository.save(reservaHotel);
         return reservaDTO;
     }
+
     @GetMapping
     @PreAuthorize("hasRole('USER')")
     public List<ReservaDTO> listarTodos() {
@@ -34,6 +41,10 @@ public class ReservaService {
             ReservaDTO dto = new ReservaDTO();
             dto.setNomeCliente(reservaHotel.getNomeCliente());
             dto.setNumeroReserva(reservaHotel.getNumeroReserva());
+            dto.setCidadeOrigemCliente(reservaHotel.getCidadeOrigemCliente());
+            dto.setUfOrigemCliente(reservaHotel.getUfOrigemCliente());
+            dto.setDataInicioReserva(reservaHotel.getDataInicioReserva());
+            dto.setDataFimReserva(reservaHotel.getDataFimReserva());
             return dto;
         }).collect(Collectors.toList());
     }
