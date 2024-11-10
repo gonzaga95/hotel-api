@@ -41,7 +41,7 @@ public class ReservaController {
 
     @PutMapping("/reservas/{numeroReserva}")
     public ReservaDTO atualizarReserva(@PathVariable Long numeroReserva, @RequestBody ReservaDTO reservaDTO) {
-        return reservaService.atualizar(numeroReserva, reservaDTO);
+        return reservaService.atualizarDataReserva(numeroReserva, reservaDTO);
     }
 
     @DeleteMapping("/reservas/{numeroReserva}")
