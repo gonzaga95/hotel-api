@@ -7,8 +7,9 @@ import java.time.LocalDate;
 public class ReservaDTO {
     private String nomeCliente;
     private Long numeroReserva;
-    private String cidadeOrigemCliente;  // Novo campo
-    private String ufOrigemCliente;      // Novo campo
-    private LocalDate dataInicioReserva; // Novo campo
-    private LocalDate dataFimReserva;    // Novo campo
+    private String cidadeOrigemCliente;
+    private String ufOrigemCliente;
+    private LocalDate dataInicioReserva;
+    private LocalDate dataFimReserva;
+    private Long diasReserva;
 }
