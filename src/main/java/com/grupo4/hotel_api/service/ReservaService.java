@@ -5,9 +5,7 @@ import com.grupo4.hotel_api.repository.ReservaRepository;
 import com.grupo4.hotel_api.DTO.ReservaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -90,5 +88,38 @@ public class ReservaService {
                     return dto;
                 })
                 .collect(Collectors.toList());
+    }
+
+    @PutMapping("/{numeroReserva}")
+    public ReservaDTO atualizar(@PathVariable Long numeroReserva, ReservaDTO reservaDTO) {
+        return reservaRepository.findByNumeroReserva(numeroReserva)
+                .map(reservaExistente -> {
+                    reservaExistente.setNomeCliente(reservaDTO.getNomeCliente());
+                    reservaExistente.setCidadeOrigemCliente(reservaDTO.getCidadeOrigemCliente());
+                    reservaExistente.setUfOrigemCliente(reservaDTO.getUfOrigemCliente());
+                    reservaExistente.setDataInicioReserva(reservaDTO.getDataInicioReserva());
+                    reservaExistente.setDataFimReserva(reservaDTO.getDataFimReserva());
+
+                    ReservaHotel reservaAtualizada = reservaRepository.save(reservaExistente);
+
+                    ReservaDTO dtoAtualizado = new ReservaDTO();
+                    dtoAtualizado.setNomeCliente(reservaAtualizada.getNomeCliente());
+                    dtoAtualizado.setNumeroReserva(reservaAtualizada.getNumeroReserva());
+                    dtoAtualizado.setCidadeOrigemCliente(reservaAtualizada.getCidadeOrigemCliente());
+                    dtoAtualizado.setUfOrigemCliente(reservaAtualizada.getUfOrigemCliente());
+                    dtoAtualizado.setDataInicioReserva(reservaAtualizada.getDataInicioReserva());
+                    dtoAtualizado.setDataFimReserva(reservaAtualizada.getDataFimReserva());
+
+                    return dtoAtualizado;
+                })
+                .orElseThrow(() -> new RuntimeException("Reserva não encontrada com o número: " + numeroReserva));
+    }
+
+    @DeleteMapping("/{numeroReserva}")
+    public void deletar(@PathVariable Long numeroReserva) {
+        ReservaHotel reserva = reservaRepository.findByNumeroReserva(numeroReserva)
+                .orElseThrow(() -> new RuntimeException("Reserva não encontrada com o número: " + numeroReserva));
+
+        reservaRepository.delete(reserva);
     }
 }

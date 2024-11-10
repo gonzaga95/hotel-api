@@ -37,4 +37,14 @@ public class ReservaController {
         return reservaService.listarDiariasMaisLongas();
     }
 
+    @PutMapping("/reservas/{numeroReserva}")
+    public ReservaDTO atualizarReserva(@PathVariable Long numeroReserva, @RequestBody ReservaDTO reservaDTO) {
+        return reservaService.atualizar(numeroReserva, reservaDTO);
+    }
+
+    @DeleteMapping("/reservas/{numeroReserva}")
+    public void deletarReserva(@PathVariable Long numeroReserva) {
+        reservaService.deletar(numeroReserva);
+    }
+
 }
