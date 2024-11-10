@@ -3,6 +3,7 @@ package edu.ada.grupo4.hotel_api.controller;
 import edu.ada.grupo4.hotel_api.DTO.ReservaDTO;
 import edu.ada.grupo4.hotel_api.service.ReservaService;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservas")
+@SecurityRequirement(name="basic-auth")
 public class ReservaController {
 
     @Autowired

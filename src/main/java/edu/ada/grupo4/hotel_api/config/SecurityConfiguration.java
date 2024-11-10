@@ -32,7 +32,18 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/h2-console/**", "/api-docs/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html","/**.html" ).permitAll()
+                                .requestMatchers(
+                                        "/h2-console/**",
+                                        "/api-docs/**",
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui/**",
+                                        "/swagger-ui.html",
+                                        "/swagger-resources/**",
+                                        "/swagger-resources/configuration/ui",
+                                        "/swagger-resources/configuration/security",
+                                        "/**.html"
+                                ).permitAll()
+
                                 .anyRequest().authenticated()
                 )
                 .headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
