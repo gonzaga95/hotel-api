@@ -1,6 +1,5 @@
 package com.grupo4.hotel_api.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
