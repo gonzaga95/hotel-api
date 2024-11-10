@@ -8,8 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReservaHotel {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeCliente;
     private Long numeroReserva;
+
 }
