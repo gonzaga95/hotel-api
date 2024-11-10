@@ -1,5 +1,6 @@
 package com.grupo4.hotel_api.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -42,9 +43,10 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService(){
+
         UserDetails user = User.builder()
-                .username("sa")
+                .username("javaweb")
                 .password(passwordEncoder().encode("teste123"))
                 .roles("USER")
                 .build();
