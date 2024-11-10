@@ -1,23 +1,15 @@
-package com.grupo4.hotel_api.model;
+package com.grupo4.hotel_api.DTO;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.time.LocalDate;
 
-@Entity
-@Getter
-@Setter
-public class ReservaHotel {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Data
+public class ReservaDTO {
     private String nomeCliente;
     private Long numeroReserva;
     private String cidadeOrigemCliente;
     private String ufOrigemCliente;
     private LocalDate dataInicioReserva;
     private LocalDate dataFimReserva;
-
+    private Long diasReserva;
 }

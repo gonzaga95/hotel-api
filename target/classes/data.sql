@@ -1,10 +1,61 @@
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
-INSERT into reserva_hotel(NOME_CLIENTE, NUMERO_RESERVA) VALUES ('Carlos Eduardo Gonzaguinha', 12345);
+INSERT INTO reserva_hotel (NOME_CLIENTE, NUMERO_RESERVA, CIDADE_ORIGEM_CLIENTE, UF_ORIGEM_CLIENTE, DATA_INICIO_RESERVA, DATA_FIM_RESERVA)
+VALUES
+    ('Nome 1', 1001, 'Cidade 1', 'SP', '2024-11-01', '2024-11-07'),
+    ('Nome 2', 1002, 'Cidade 2', 'RJ', '2024-11-02', '2024-11-06'),
+    ('Nome 3', 1003, 'Cidade 3', 'MG', '2024-11-03', '2024-11-13'),
+    ('Nome 4', 1004, 'Cidade 4', 'BA', '2024-11-04', '2024-11-14'),
+    ('Nome 5', 1005, 'Cidade 5', 'SP', '2024-11-05', '2024-11-08'),
+
+    ('Nome 6', 1006, 'Cidade 6', 'RJ', '2024-11-06', '2024-11-11'),
+    ('Nome 7', 1007, 'Cidade 7', 'MG', '2024-11-07', '2024-11-20'),
+    ('Nome 8', 1008, 'Cidade 8', 'BA', '2024-11-08', '2024-11-18'),
+    ('Nome 9', 1009, 'Cidade 9', 'SP', '2024-11-09', '2024-11-12'),
+    ('Nome 10', 1010, 'Cidade 10', 'RJ', '2024-11-10', '2024-11-21'),
+
+    ('Nome 11', 1011, 'Cidade 11', 'MG', '2024-11-11', '2024-11-16'),
+    ('Nome 12', 1012, 'Cidade 12', 'BA', '2024-11-12', '2024-11-22'),
+    ('Nome 13', 1013, 'Cidade 13', 'SP', '2024-11-13', '2024-11-19'),
+    ('Nome 14', 1014, 'Cidade 14', 'RJ', '2024-11-14', '2024-11-18'),
+    ('Nome 15', 1015, 'Cidade 15', 'MG', '2024-11-15', '2024-11-28'),
+
+    ('Nome 16', 1016, 'Cidade 16', 'BA', '2024-11-16', '2024-11-25'),
+    ('Nome 17', 1017, 'Cidade 17', 'SP', '2024-11-17', '2024-11-24'),
+    ('Nome 18', 1018, 'Cidade 18', 'RJ', '2024-11-18', '2024-11-30'),
+    ('Nome 19', 1019, 'Cidade 19', 'MG', '2024-11-19', '2024-11-26'),
+    ('Nome 20', 1020, 'Cidade 20', 'BA', '2024-11-20', '2024-11-29'),
+
+    ('Nome 21', 1021, 'Cidade 21', 'SP', '2024-11-21', '2024-12-01'),
+    ('Nome 22', 1022, 'Cidade 22', 'RJ', '2024-11-22', '2024-11-27'),
+    ('Nome 23', 1023, 'Cidade 23', 'MG', '2024-11-23', '2024-12-02'),
+    ('Nome 24', 1024, 'Cidade 24', 'BA', '2024-11-24', '2024-12-04'),
+    ('Nome 25', 1025, 'Cidade 25', 'SP', '2024-11-25', '2024-12-03'),
+
+    ('Nome 26', 1026, 'Cidade 26', 'RJ', '2024-11-26', '2024-12-05'),
+    ('Nome 27', 1027, 'Cidade 27', 'MG', '2024-11-27', '2024-12-08'),
+    ('Nome 28', 1028, 'Cidade 28', 'BA', '2024-11-28', '2024-12-09'),
+    ('Nome 29', 1029, 'Cidade 29', 'SP', '2024-11-29', '2024-12-08'),
+    ('Nome 30', 1030, 'Cidade 30', 'RJ', '2024-11-30', '2024-12-04'),
+
+    ('Nome 31', 1031, 'Cidade 31', 'MG', '2024-12-01', '2024-12-06'),
+    ('Nome 32', 1032, 'Cidade 32', 'BA', '2024-12-02', '2024-12-07'),
+    ('Nome 33', 1033, 'Cidade 33', 'SP', '2024-12-03', '2024-12-15'),
+    ('Nome 34', 1034, 'Cidade 34', 'RJ', '2024-12-04', '2024-12-14'),
+    ('Nome 35', 1035, 'Cidade 35', 'MG', '2024-12-05', '2024-12-19'),
+
+    ('Nome 36', 1036, 'Cidade 36', 'BA', '2024-12-06', '2024-12-16'),
+    ('Nome 37', 1037, 'Cidade 37', 'SP', '2024-12-07', '2024-12-12'),
+    ('Nome 38', 1038, 'Cidade 38', 'RJ', '2024-12-08', '2024-12-18'),
+    ('Nome 39', 1039, 'Cidade 39', 'MG', '2024-12-09', '2024-12-19'),
+    ('Nome 40', 1040, 'Cidade 40', 'BA', '2024-12-10', '2024-12-15'),
+
+    ('Nome 41', 1041, 'Cidade 41', 'SP', '2024-12-11', '2024-12-21'),
+    ('Nome 42', 1042, 'Cidade 42', 'RJ', '2024-12-12', '2024-12-22'),
+    ('Nome 43', 1043, 'Cidade 43', 'MG', '2024-12-13', '2024-12-23'),
+    ('Nome 44', 1044, 'Cidade 44', 'BA', '2024-12-14', '2024-12-24'),
+    ('Nome 45', 1045, 'Cidade 45', 'SP', '2024-12-15', '2024-12-25'),
+
+    ('Nome 46', 1046, 'Cidade 46', 'RJ', '2024-12-16', '2024-12-26'),
+    ('Nome 47', 1047, 'Cidade 47', 'MG', '2024-12-17', '2024-12-27'),
+    ('Nome 48', 1048, 'Cidade 48', 'BA', '2024-12-18', '2024-12-28'),
+    ('Nome 49', 1049, 'Cidade 49', 'SP', '2024-12-19', '2024-12-29'),
+    ('Nome 50', 1050, 'Cidade 50', 'RJ', '2024-12-20', '2024-12-30');
