@@ -1,5 +1,6 @@
     package edu.ada.grupo4.hotel_api.service;
     
+    import edu.ada.grupo4.hotel_api.DTO.ReservaUpdateDTO;
     import edu.ada.grupo4.hotel_api.model.ReservaHotel;
     import edu.ada.grupo4.hotel_api.repository.ReservaRepository;
     import edu.ada.grupo4.hotel_api.DTO.ReservaDTO;
@@ -89,15 +90,15 @@
                     })
                     .collect(Collectors.toList());
         }
-    
+
         @PutMapping("/{numeroReserva}")
         public ReservaDTO atualizarDataReserva(@PathVariable Long numeroReserva,
-                                               @RequestBody ReservaDTO reservaDTO) {
+                                               @RequestBody ReservaUpdateDTO reservaUpdateDTO) {
             return reservaRepository.findByNumeroReserva(numeroReserva)
                     .map(reservaExistente -> {
-                        reservaExistente.setDataInicioReserva(reservaDTO.getDataInicioReserva());
-                        reservaExistente.setDataFimReserva(reservaDTO.getDataFimReserva());
-    
+                        reservaExistente.setDataInicioReserva(reservaUpdateDTO.getDataInicioReserva());
+                        reservaExistente.setDataFimReserva(reservaUpdateDTO.getDataFimReserva());
+
                         ReservaHotel reservaAtualizada = reservaRepository.save(reservaExistente);
                         ReservaDTO dtoAtualizado = new ReservaDTO();
                         dtoAtualizado.setNomeCliente(reservaAtualizada.getNomeCliente());

@@ -1,6 +1,7 @@
 package edu.ada.grupo4.hotel_api.controller;
 
 import edu.ada.grupo4.hotel_api.DTO.ReservaDTO;
+import edu.ada.grupo4.hotel_api.DTO.ReservaUpdateDTO;
 import edu.ada.grupo4.hotel_api.service.ReservaService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -39,9 +40,9 @@ public class ReservaController {
         return reservaService.listarDiariasMaisLongas();
     }
 
-    @PutMapping("/reservas/{numeroReserva}")
-    public ReservaDTO atualizarReserva(@PathVariable Long numeroReserva, @RequestBody ReservaDTO reservaDTO) {
-        return reservaService.atualizarDataReserva(numeroReserva, reservaDTO);
+    @PutMapping("/{numeroReserva}")
+    public ReservaDTO atualizarReserva(@PathVariable Long numeroReserva, @RequestBody ReservaUpdateDTO reservaUpdateDTO) {
+        return reservaService.atualizarDataReserva(numeroReserva, reservaUpdateDTO);
     }
 
     @DeleteMapping("/reservas/{numeroReserva}")
