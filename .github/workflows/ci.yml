@@ -21,18 +21,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Step 2: Instalar o Gradle
-      - name: Configurar o Gradle
-        uses: gradle/actions/wrapper-validation@v4
+      # Step 2: Set up Maven
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-      # Step 3: Rodar os testes
-      - name: Executar testes unitários
-        run: ./gradlew test --no-daemon
+      # Step 3: Run tests
+      - name: Run unit tests
+        run: mvn test
 
-      # Step 4: Publicar os relatórios de testes
-      - name: Publicar relatórios de testes
+      # Step 4: Publish test reports
+      - name: Publish test reports
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-reports
-          path: build/reports/tests/test/
+          path: target/surefire-reports/
