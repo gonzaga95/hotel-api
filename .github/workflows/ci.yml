@@ -18,15 +18,15 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: '21'
+          distribution: 'adopt'
 
       # Step 2: Set up Maven
       - name: Set up Maven
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'maven'
+          java-version: '21'
 
       # Step 3: Run tests
       - name: Run unit tests
