@@ -1,6 +1,6 @@
-# Hotel API - Reserva de Hotel - Santander Coders 2024
+# Hotel API - Evolução da Agenda de Contatos - Santander Coders 2024
 
-API RESTful para gerenciamento de reservas de hotel, desenvolvida em Java com Spring Boot. Esta aplicação permite criar, atualizar, listar e excluir reservas de hotel, além de incluir autenticação básica para segurança.
+API RESTful desenvolvida em Java com Spring Boot para gerenciar uma agenda de contatos aprimorada. A aplicação permite cadastrar contatos, associar novos itens (como reservas de hotel, carros, ou outros objetos), e realizar operações específicas sobre eles.
 
 ## Índice
 
@@ -11,6 +11,7 @@ API RESTful para gerenciamento de reservas de hotel, desenvolvida em Java com Sp
 5. [Segurança](#segurança)
 6. [Configurações de Banco de Dados](#configurações-de-banco-de-dados)
 7. [Swagger](#swagger)
+8. [Teste Automatizado](#teste)
 
 ## Pré-requisitos
 
@@ -99,6 +100,87 @@ spring.h2.console.settings.web-allow-others=false
 ## Swagger
 
 A documentação dos endpoints da API está disponível via Swagger em `http://localhost:8080/swagger-ui.html`. No Swagger UI, você pode explorar todos os endpoints e fazer requisições, incluindo o método `PUT` para atualização de reservas com apenas os campos permitidos (`dataInicioReserva` e `dataFimReserva`).
+
+
+## Testes Automatizados
+
+A aplicação inclui testes de integração para os controladores, utilizando **JUnit 5** e **RestAssured** para verificar o comportamento dos endpoints da API.  
+
+### Exemplo de Teste de Integração
+
+Um teste integrado no **`ReservaControllerTest`** verifica se é possível salvar uma nova reserva com sucesso:
+```java
+@Test
+public void testSalvarReserva() {
+    given()
+            .body(
+                "{
+" +
+                "    "nomeCliente": "João",
+" +
+                "    "numeroReserva": 1,
+" +
+                "    "cidadeOrigemCliente": "São Paulo",
+" +
+                "    "ufOrigemCliente": "SP",
+" +
+                "    "dataInicioReserva": "2021-10-01",
+" +
+                "    "dataFimReserva": "2021-10-10"
+" +
+                "}"
+            )
+            .contentType("application/json")
+            .header("Authorization", "Basic amF2YXdlYjp0ZXN0ZTEyMw==")
+            .when()
+            .post("/reservas")
+            .then()
+            .statusCode(200)
+            .body("nomeCliente", equalTo("João"));
+}
+```
+
+### Configuração dos Testes
+
+- Os testes são configurados para rodar com o servidor embutido na porta aleatória (`RANDOM_PORT`).  
+- A autenticação básica (`Basic Auth`) é usada para acessar os endpoints protegidos.  
+
+### Executando os Testes
+
+Para executar os testes automatizados, use o Maven:
+```bash
+mvn test
+```
+
+O framework **RestAssured** é usado para facilitar a construção e execução de requisições HTTP, garantindo que as respostas retornem conforme esperado.
+
+### Cobertura de Testes
+
+Atualmente, os testes cobrem os seguintes cenários:
+- Salvamento de reservas com dados válidos.
+- Verificação de autenticação para endpoints protegidos.
+
+### Dependências Necessárias
+
+Certifique-se de que as seguintes dependências estão incluídas no `pom.xml`:
+```xml
+<dependencies>
+    <!-- JUnit -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- RestAssured -->
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
 
 
 ## Projeto
