@@ -185,4 +185,4 @@ Certifique-se de que as seguintes dependências estão incluídas no `pom.xml`:
 
 ## Projeto
 
-Esse projeto foi desenvolvido para a disciplina de Java Web da plataforma Ada Tech, no programa Santander Coders 2024.
+Esse projeto foi desenvolvido para a disciplina de Testes Automatizados da plataforma Ada Tech, no programa Santander Coders 2024.
