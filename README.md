@@ -1,6 +1,7 @@
 # Hotel API - Evolução da Agenda de Contatos - Santander Coders 2024
 
-API RESTful desenvolvida em Java com Spring Boot para gerenciar uma agenda de contatos aprimorada. A aplicação permite cadastrar contatos, associar novos itens (como reservas de hotel, carros, ou outros objetos), e realizar operações específicas sobre eles.
+API RESTful desenvolvida em Java com Spring Boot para gerenciar reservas de hotéis. A aplicação permite criar, atualizar, listar e excluir reservas, garantindo a organização e a gestão eficiente de dados de clientes e suas reservas.
+
 
 ## Índice
 
@@ -22,7 +23,7 @@ API RESTful desenvolvida em Java com Spring Boot para gerenciar uma agenda de co
 
 Clone o repositório e faça o build da aplicação usando o Maven:
 ```bash
-git clone https://github.com/mauriciogonrails/hotel-api.git
+git clone https://github.com/gonzaga95/hotel-api/
 cd projeto-hotel-api
 mvn clean install
 ```
@@ -102,87 +103,61 @@ spring.h2.console.settings.web-allow-others=false
 A documentação dos endpoints da API está disponível via Swagger em `http://localhost:8080/swagger-ui.html`. No Swagger UI, você pode explorar todos os endpoints e fazer requisições, incluindo o método `PUT` para atualização de reservas com apenas os campos permitidos (`dataInicioReserva` e `dataFimReserva`).
 
 
-## Testes Automatizados
+# Testes Unitários - Classe ReservaMapper
 
-A aplicação inclui testes de integração para os controladores, utilizando **JUnit 5** e **RestAssured** para verificar o comportamento dos endpoints da API.  
+A classe `ReservaMapper` é responsável pela conversão entre objetos do tipo `ReservaDTO` e `ReservaHotel`. Os testes garantem que essas conversões estão funcionando corretamente.
 
-### Exemplo de Teste de Integração
+## Teste: toEntity com dados válidos
 
-Um teste integrado no **`ReservaControllerTest`** verifica se é possível salvar uma nova reserva com sucesso:
 ```java
 @Test
-public void testSalvarReserva() {
-    given()
-            .body(
-                "{
-" +
-                "    "nomeCliente": "João",
-" +
-                "    "numeroReserva": 1,
-" +
-                "    "cidadeOrigemCliente": "São Paulo",
-" +
-                "    "ufOrigemCliente": "SP",
-" +
-                "    "dataInicioReserva": "2021-10-01",
-" +
-                "    "dataFimReserva": "2021-10-10"
-" +
-                "}"
-            )
-            .contentType("application/json")
-            .header("Authorization", "Basic amF2YXdlYjp0ZXN0ZTEyMw==")
-            .when()
-            .post("/reservas")
-            .then()
-            .statusCode(200)
-            .body("nomeCliente", equalTo("João"));
+public void toEntity_deveRetornarUmReservaHotel() {
+    ReservaDTO reservaDTO = new ReservaDTO();
+    reservaDTO.setNomeCliente("João");
+    reservaDTO.setNumeroReserva(1L);
+    reservaDTO.setCidadeOrigemCliente("São Paulo");
+    reservaDTO.setUfOrigemCliente("SP");
+    reservaDTO.setDataInicioReserva(LocalDate.of(2021, 10, 10));
+    reservaDTO.setDataFimReserva(LocalDate.of(2021, 10, 15));
+
+    ReservaHotel reservaHotel = reservaMapper.toEntity(reservaDTO);
+
+    assertNotNull(reservaHotel);
+    assertEquals(reservaDTO.getNomeCliente(), reservaHotel.getNomeCliente());
 }
-```
 
-### Configuração dos Testes
 
-- Os testes são configurados para rodar com o servidor embutido na porta aleatória (`RANDOM_PORT`).  
-- A autenticação básica (`Basic Auth`) é usada para acessar os endpoints protegidos.  
 
-### Executando os Testes
+# Teste: toEntity com entrada nula
 
-Para executar os testes automatizados, use o Maven:
-```bash
-mvn test
-```
+@Test
+public void toEntity_deveRetornarUmReservaHotelComNumeroReservaNulo() {
+    ReservaHotel reservaHotel = reservaMapper.toEntity(null);
 
-O framework **RestAssured** é usado para facilitar a construção e execução de requisições HTTP, garantindo que as respostas retornem conforme esperado.
+    assertNull(reservaHotel);
+}
 
-### Cobertura de Testes
 
-Atualmente, os testes cobrem os seguintes cenários:
-- Salvamento de reservas com dados válidos.
-- Verificação de autenticação para endpoints protegidos.
+# Teste: toDTO com dados válidos
 
-### Dependências Necessárias
+@Test
+public void toDto_deveRetornarUmReservaDTO() {
+    ReservaHotel reservaHotel = new ReservaHotel();
+    reservaHotel.setNomeCliente("João");
+    reservaHotel.setNumeroReserva(1L);
+    reservaHotel.setCidadeOrigemCliente("São Paulo");
+    reservaHotel.setUfOrigemCliente("SP");
+    reservaHotel.setDataInicioReserva(LocalDate.of(2021, 10, 10));
+    reservaHotel.setDataFimReserva(LocalDate.of(2021, 10, 15));
 
-Certifique-se de que as seguintes dependências estão incluídas no `pom.xml`:
-```xml
-<dependencies>
-    <!-- JUnit -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
-    </dependency>
+    ReservaDTO reservaDTO = reservaMapper.toDTO(reservaHotel);
 
-    <!-- RestAssured -->
-    <dependency>
-        <groupId>io.rest-assured</groupId>
-        <artifactId>rest-assured</artifactId>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
-```
+    assertNotNull(reservaDTO);
+    assertEquals(reservaHotel.getNomeCliente(), reservaDTO.getNomeCliente());
+}
 
 
 
 ## Projeto
 
-Esse projeto foi desenvolvido para a disciplina de Testes Automatizados da plataforma Ada Tech, no programa Santander Coders 2024.
+Esse projeto foi desenvolvido para a disciplina de Testes Automatizados I da plataforma Ada Tech, no programa Santander Coders 2024.
